@@ -1,0 +1,42 @@
+
+
+.header_Container{
+
+    background-color: blue;
+    width :100vw;
+    height : auto;
+    color :white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.content_Container{
+
+    width:100%;
+    background-color: orange;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding: 1%;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+}
+
+
+.logoContainer{ 
+    background-color: green;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.navigation{
+    background-color: purple;
+    width:100%;
+    display: flex;
+    justify-content: right;
+}

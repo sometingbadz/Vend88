@@ -1,0 +1,27 @@
+
+
+
+
+
+.container{
+    width:100%;
+    height :50px;
+    background:blue;
+    display: grid;
+    padding:5px;
+    box-sizing: border-box;
+    
+    
+}
+
+.items{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    transition: all 0.5s;
+    overflow: hidden;
+}
+.items:hover{
+    background-color: red;
+}
