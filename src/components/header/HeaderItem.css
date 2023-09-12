@@ -13,7 +13,7 @@
 
 .items{
     /* transition: all 0.5s; */
-    overflow: hidden;
+
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
@@ -25,8 +25,9 @@
     color: grey;
     /* transition: all 0.5s; */
     cursor: pointer;
-    padding: 2%;
-    box-sizing: border-box;
+    /* padding: 2%; */
+    margin-left: 5%;
+    /* box-sizing: border-box; */
 }
 .items:hover{
     opacity: 60%;
