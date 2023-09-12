@@ -2,11 +2,11 @@
 
 .header_Container{
 
-    background-color: blue;
-    width :100vw;
+    background-color: white;
+    width :100%;
     height : auto;
     color :white;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 100;
@@ -15,28 +15,66 @@
 .content_Container{
 
     width:100%;
-    background-color: orange;
+    /* background-color: red; */
     display: grid;
-    grid-template-columns: 30% 70%;
-    padding: 1%;
-    padding-left: 0;
-    padding-right: 0;
+    padding :10px;
+    padding-left: 3%;
+    padding-right: 3%;
     box-sizing: border-box;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px;
+    grid-template-columns: 30% 2% 68%;
+
+
 }
 
 
 .logoContainer{ 
-    background-color: green;
     width:100%;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
+    overflow: hidden;
 
 }
 
 .navigation{
-    background-color: purple;
+    right: 0;
+    align-items: center;
     width:100%;
     display: flex;
     justify-content: right;
 }
+
+.LogoImage{
+    object-fit: contain;
+    width: 40%;
+}
+
+@media only screen and (max-width: 1000px) {
+    .LogoImage{
+       width:100%;
+    }
+    /* .content_Container{
+        grid-template-columns: 30% 10% 60%;
+
+    } */
+    .navigation{
+        font-size : clamp(8px, 3vw, 25px);
+
+    }
+}
+
+
+@media only screen and (min-width: 1000px) {
+ 
+    /* .content_Container{
+
+        grid-template-columns: 30% 40% 30%;
+    } */
+    .navigation{
+        font-size : clamp(8px, 1.5vw, 25px);
+
+    }
+}
+

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 
 
@@ -7,11 +7,9 @@ import "./Styling.css";
 
 let RenerPage : React.FC<{}> = (props) => { 
 
-
-
     return (
         <>
-            <div style = {{width:'100vw', height :'100vh', display:'flex', flexDirection:'column',  justifyContent:'center', alignItems:'center'}}>
+            <div style = {{ width:'100vw', height :'101vh', display:'flex', flexDirection:'column',  justifyContent:'center', alignItems:'center'}}>
                 <h1> HOME PAGE </h1>
             </div>
         </>

@@ -5,14 +5,20 @@ import React, { useLayoutEffect } from "react";
 import style from "./Styling.module.css";
 import react from "react";
 
-interface GridItems{
+export interface GridItems{
     name : string,
     description : string,
-    price : string,
     imageUrl : string
 }
 
-let RenerPage : React.FC<{}> = (props) => { 
+
+
+// some item is clicked, we set state of item
+let itemClick =() => {
+
+}
+
+let RenerPage : React.FC<{Elements : GridItems[]}> = (props) => { 
     let columnSize = 2; 
 
     let [itemHeight, setItemHeight] = react.useState(0);
@@ -42,32 +48,53 @@ let RenerPage : React.FC<{}> = (props) => {
       
     }
 
+    let [SelectedItem, setSelectedItem] = react.useState(-1);
+
 
     return (
         <>
+
+            {
+                (SelectedItem !=-1) && 
+                <div onMouseDown={ (event) => {setSelectedItem(-1);}} className={style.ItemoverlayContainer}>
+                    <div onMouseDown={(event) => {event.stopPropagation();}} className={style.itemOverlay}>
+                        <div style = {{width:"100%", height :"100%", background:'white', padding:'9%', boxSizing:'border-box'}}> 
+                            <img style ={{alignSelf:'start', objectFit:'contain', background:"rgba(0,0,0,0.1)", border :'solid 1px black',  height:'100%', width :'100%'}} src =  { props.Elements[SelectedItem].imageUrl == "" ? "https://i.ibb.co/C6pcK0x/comingsoon.png"  : props.Elements[SelectedItem].imageUrl }/>
+                        </div>
+                        <div style = {{padding :'5%', boxSizing:'border-box',}}>
+                            <h1>  {props.Elements[SelectedItem].name} </h1>
+                            <h3> {props.Elements[SelectedItem].description}</h3>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        
             <div className= {style.container} style={{display:'grid', gridTemplateColumns : `repeat(${columnSize}, ${100/columnSize}%)`     }}>
                 {
                     (() => {
                         const items = [];
-                        for (let i = 0; i < 20; i++) {
+                        for (let i = 0; i < props.Elements.length; i++) {
                           items.push(
-                            <div className={style.itemBlock} style = {{height:`${itemHeight}px`}}> 
-                                <div onMouseLeave={itemAction} onMouseEnter={itemAction} className={style.items} key={i}>
-                                    <div style = {{transform:'translate(100%,0)', transition : 'all 1s'}} className={style.viewMoreContainer}>
+                            <div className={style.itemBlock} style = {{minHeight:`${itemHeight}px`, height:'400px'}}> 
+                                <div onMouseDown={ () => {setSelectedItem(i)}} onMouseLeave={itemAction} onMouseEnter={itemAction} className={style.items} key={i}>
+                                    <div style = {{fontSize :'15px', transform:'translate(100%,0)', transition : 'all 1s'}} className={style.viewMoreContainer}>
                                         FIND OUT MORE
                                     </div>
                                     <div style = {{ width:'100%', padding:'5%', boxSizing:'border-box', height:'100%', overflow:'hidden'}}>
-                                        <img style ={{objectFit:'contain', height:'100%', width :'100%'}} src = "https://static.wixstatic.com/media/3d8e8d_3bf6435515f247ec8ab6e1597790fe11~mv2.png/v1/fill/w_356,h_356,al_c,q_85,enc_auto/3d8e8d_3bf6435515f247ec8ab6e1597790fe11~mv2.png"/>
+                                        <img style ={{objectFit:'contain', height:'100%', width :'100%', padding:'10%', boxSizing:'border-box'}} 
+                                            src =  { props.Elements[i].imageUrl == "" ? "https://i.ibb.co/C6pcK0x/comingsoon.png"  : props.Elements[i].imageUrl }
+                                        />
                                     </div>
-                                    <div style = {{width:'100%', height:'60%'}}>
+                                    <div className={style.itemDescriptionContainer}  style = {{width:'100%',  overflow:'hidden'}}>
                                         <div className = {style.itemName}>
-                                                Name
+                                                {props.Elements[i].name}
+                                        </div>
+                                        <div className= {style.itemDescription} >
+                                                {props.Elements[i].description}
                                         </div>
 
-                                        <div>
-                                            description
-                                        </div>
-
+                                        {/* {(props.Elements[i].imageUrl == "") {"sd"} : {props.Elements[i].imageUrl} } */}
                                     </div>
                                 </div>
                             </div>

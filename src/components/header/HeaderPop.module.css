@@ -1,0 +1,16 @@
+.items{
+    text-align: center;
+    color: grey;
+    border-radius: 1.5em;
+    padding: 15px;
+    margin-left: 10px;
+    /* background-color: violet; */
+    box-sizing: border-box;
+    cursor: pointer;
+    /* transition: all 0.3; */
+}
+
+.items:hover{
+    opacity: 90%;
+    color: black;
+}
