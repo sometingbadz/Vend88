@@ -62,9 +62,7 @@ function App() {
         set_Pageurl(MyBorwser.getPage());
   }
 
-  MyBorwser.setCallback(pageRefresh);                   // estbalish refresh callback funct
-
-
+  MyBorwser.setReload(pageRefresh);                   // estbalish refresh callback funct
 
 
   useLayoutEffect(
@@ -79,9 +77,10 @@ function App() {
             }
         }
 
+        
         // resize action listener to re-initialise header height
         window.addEventListener("resize", changeHeaderHeight);
-        changeHeaderHeight(currentPage_URL, headerHeight);
+        changeHeaderHeight();
         return () => {
             window.removeEventListener("resize", changeHeaderHeight  );
         }
