@@ -11,6 +11,8 @@ let RenderHeader : React.FC<{headerItem : HeaderItem[]}> = (props) => {
 
     let headerLogo_Src = "https://i.ibb.co/CwNY3MH/Image-20230911125912.png";
 
+
+    /** Load header image (logo) */
     useEffect(
         () =>{
             let getImage = async() => 
@@ -19,27 +21,21 @@ let RenderHeader : React.FC<{headerItem : HeaderItem[]}> = (props) => {
                 let image_Promise : Promise<HTMLImageElement> = MyBrowser.getImage(headerLogo_Src);
                 image_Promise.then
                 ( 
-                    (element) => 
-                    {
-                        console.log("Image Element retrieved")
-                        MyBrowser.reload(); // reload page 
-                        // setImageElement(element);
-                        // if (props.isLoaded != undefined) props.isLoaded();
-                    } 
+                    (element) =>  {MyBrowser.reload(); }                                     // reload page 
+                
                 )
                 .catch
                 (
-                    (err) => 
-                    {
-                        console.log("Error for Element retrival : " + err); 
-                        // setImageElement(null);
-                    }
+                    (err) => { console.log("Error for Element Logo : " + err); }
+                    
                 )
             }
             getImage();
         }
-    )
+    );
 
+
+    // Sub-header drive
     useLayoutEffect(
         () => { 
             let ConfigurePopup = (trigger : Event) => { 

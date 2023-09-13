@@ -1,4 +1,5 @@
 import React, { useLayoutEffect } from "react";
+import FadeAnimation from '../../Animations/PageFade';
 
 
 
@@ -46,7 +47,11 @@ let RenerPage : React.FC<{}> = (props) => {
     ]
     return (
         <>
-            <GridItemContainer Elements={GridItem} />
+            <FadeAnimation>
+                <GridItemContainer Elements={GridItem} />
+
+
+            </FadeAnimation>
         </>
     )
 

@@ -11,7 +11,7 @@ let renerPage : React.FC<{}> = (props) => {
 
     return (
         <>
-            <div style = {{ background : '#ffcf00', width:'100vw', height :'102vh', display:'flex', flexDirection:'column',  justifyContent:'center', alignItems:'center'}}>
+            <div style = {{ background : '#ffcf00', width:'100vw', height :'100vh', display:'flex', flexDirection:'column',  justifyContent:'center', alignItems:'center'}}>
                 <div className="imageContainer">
                     <img style = {{width:"100%", height : '100%', objectFit:'contain'}} src = "https://svgur.com/i/xWv.svg"/> 
                 </div>

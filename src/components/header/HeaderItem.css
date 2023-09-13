@@ -15,7 +15,7 @@
     /* transition: all 0.5s; */
 
     text-overflow: ellipsis;
-    overflow: hidden;
+    /* overflow: hidden; */
     display: -webkit-box;
     text-align: center;
     -webkit-line-clamp: 1;
@@ -27,6 +27,7 @@
     cursor: pointer;
     /* padding: 2%; */
     margin-left: 5%;
+    position: relative;
     /* box-sizing: border-box; */
 }
 .items:hover{
