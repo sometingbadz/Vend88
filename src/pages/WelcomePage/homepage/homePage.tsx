@@ -5,13 +5,17 @@ import FadeAnimation from '../../../Animations/PageFade';
 import "./Styling.css";
 
 
+import MainSection from "./mainSection"
+
+
 let RenerPage : React.FC<{}> = (props) => { 
 
     return (
         <>
             <FadeAnimation>
-                <div style = {{ width:'100%', height :'101vh', display:'flex', flexDirection:'column',  justifyContent:'center', alignItems:'center'}}>
-                    <h1> HOME PAGE </h1>
+                <div style = {{ width:'100%', minHeight :'101vh'}}>
+                    <MainSection />
+                
                 </div>     
             </FadeAnimation>
 
