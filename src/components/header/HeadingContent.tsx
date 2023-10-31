@@ -6,13 +6,24 @@ import "./HeaderItem.css";
 import MyBrowser from '../../Browser/MyBrowser'; 
 import { transform } from "typescript";
 
+
+
+// subheader items
+export interface SubItems{
+    items : HeaderItem[];
+}
+
 export interface HeaderItem { 
     name:string,
     url :string,
+    subitems ?: SubItems;
 }
 
-let itemClick = (Item : HeaderItem) =>{
-    MyBrowser.setPage(Item.url);
+let itemClick = (Item : HeaderItem | undefined) =>{
+    if (Item != undefined){
+        console.log("Navigating to url : " + Item.url);
+        MyBrowser.setPage(Item.url);
+    }
 }
 
 const itemHover: React.MouseEventHandler<HTMLDivElement> = (event) => {
@@ -39,36 +50,40 @@ const itemHover: React.MouseEventHandler<HTMLDivElement> = (event) => {
 
  };
 
+
+
 let Render : React.FC<{HeaderElements : HeaderItem[]}> = (props) => {
     let containerSize = props.HeaderElements.length;
+    console.log("aa" + props.HeaderElements.at(0)?.subitems?.items.at(0));
 
     return (
         <>
             <div className="container" style = {{ position:'relative', gridTemplateColumns : `repeat( ${containerSize}, ${100/containerSize}%)` }}> 
                 {
                     props.HeaderElements.map( (item : HeaderItem) => {
-                        return (
-                            // <div style = {{ background:'green'}}>
+                        
+                        let subitems = []; // sub heaader pages
+                        if (item.subitems != undefined) {
+                            let current : SubItems = item.subitems;
+                            
+                            for (let i=0; i < current.items.length; i++) {
+                                let currentSubItem = current.items.at(i);
+                                    subitems.push ( <div onMouseDown={(e) => { e.stopPropagation(); itemClick(currentSubItem)}} className = "subitem" style = {{zIndex:'1', border:"1px solid black",  color :'black', marginTop:'2px'}}> {currentSubItem?.name} </div> );
+                                
+                            }
+                        }
 
-                            //         kkk
-                            // </div>
+                        return (
                             <>
                                 <div onMouseEnter={itemHover} onMouseLeave={itemLeave} onMouseDown={() =>{itemClick(item)}} className = "items" 
-                                style = {{color: `${MyBrowser.getPage() == item.url ? "orange" : "grey"} `}}> 
+                                style = {{color: `${MyBrowser.getPage() == item.url ? "orange" : "grey"} ` }}> 
                                    {item.name}
-                                    <div style = {{   background:'white', zIndex:'5',width :'100px', boxSizing:'border-box',
-                                    position:'absolute',  color:'white', transform:'translate(0%, 10px)', display:'none'}}>
-                                        <div style = {{border:"1px solid black",  marginTop:'20px', color :'black'}}>
-                                                ABC
-                                        </div>
 
-                                        <div style = {{border:"1px solid black",  marginTop:'5px', color :'black'}}>
-                                        ABC
-                                        </div>
+                                    <div style = {{zIndex:'5',width :'130px', boxSizing:'border-box',
+                                    position:'absolute',  color:'white', display:'none'}}>
+                                        <div style = {{marginTop :'25px'}}/>
+                                        {subitems}
                                     </div>
-
-                                    
-                                    
                                 </div>
                             
                             </>

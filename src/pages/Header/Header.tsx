@@ -4,19 +4,33 @@ import HeadingContent, {HeaderItem} from '../../components/header/HeadingContent
 import Header from "../../components/header/header";
 import PageUris from "../../PageUris"
 
+  
 let headerItems : HeaderItem[] = [
-
     {
-        name :"Home",
-        url : PageUris.home
+        name :"Vends",
+        url : PageUris.vending,
+        subitems : {
+            items : // header items interface
+            [
+                {
+                    name: "Harajuku",
+                    url: PageUris.vending + "/0"
+                },
+                {
+                    name: "Hokkaido",
+                    url: PageUris.vending +"/1"
+                }
+            ]
+        }
     },
     {
-        name :"Vending",
-        url : PageUris.vending
-    },
-    {
-        name :"location",
+        name :"Location",
         url : PageUris.location
+
+    },
+    {
+        name :"AboutUs",
+        url : PageUris.about
 
     },
     {

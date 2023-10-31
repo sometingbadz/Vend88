@@ -55,8 +55,7 @@ let RenerPage : React.FC<{}> = (props) => {
                             <h1>
                                 Instagram
                             </h1> 
-                         
-                            <p> @vend_88 </p>
+                            <a style={{color:'blue'}} href="https://www.instagram.com/vend_88"> <p> @vend_88 </p></a>
                         </div>
 
                     </div>

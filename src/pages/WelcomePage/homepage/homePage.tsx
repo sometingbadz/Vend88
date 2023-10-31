@@ -15,7 +15,6 @@ let RenerPage : React.FC<{}> = (props) => {
             <FadeAnimation>
                 <div style = {{ width:'100%', minHeight :'101vh'}}>
                     <MainSection />
-                
                 </div>     
             </FadeAnimation>
 

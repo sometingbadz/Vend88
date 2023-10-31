@@ -8,12 +8,12 @@ let RenderPage : React.FC<{children : React.ReactNode}> = (props) => {
 
     return (
         <>
-            <div style = {{width:"100%", display:'flex', justifyContent : 'center'}}>
+            <div style = {{width:"100%",  display:'flex', justifyContent : 'center'}}>
                 <div id = "pageWrapper" style = {
                     {
                         width: `${MaxPageWidth}px`,
                         maxWidth:'3000px', position :'relative', overflow:'hidden'
-                        ,background:'#fcfbfc'
+                        ,background:'#fcfbfc', minWidth:'220px',
                     }}>
                     {props.children}
                 </div>

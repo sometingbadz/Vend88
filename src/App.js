@@ -14,12 +14,13 @@ import MyBorwser from "./Browser/MyBrowser.tsx";
 import PageUrls from './PageUris';
 import ContactPage from "./pages/ContactPage/contact.tsx";
 import LocationPage from "./pages/LocationPage/LocationPage.tsx";
+import AboutPage from "./pages/AboutPage/About.tsx";
 
 /** Return jsx of the page based on the given url  */
 let getPage = (headerHeight) =>{
     let element;
     let Headercontent =
-            <> 
+            <>
                 <Header/>
                 <div className='header_padding' style ={{height:`${headerHeight}px`, width :'100%;'}}/>
             </>
@@ -27,7 +28,7 @@ let getPage = (headerHeight) =>{
     switch(MyBorwser.getPage())
     {
         case PageUrls.vending :                                                   
-            element = <VendingPage/>
+            element = <VendingPage key = {MyBorwser.getCurrentPath()}/>                                                  // random key used to evoke re-render, always. 
         break;
         case PageUrls.home :
             element =  <HomePage/>
@@ -38,8 +39,13 @@ let getPage = (headerHeight) =>{
         case PageUrls.contact :
             element =  <ContactPage/>
         break;
+        case PageUrls.about :
+            element =  <AboutPage/>
+        break;
         default :
-            return <WelcomePage/>;
+            element =  <HomePage/>
+
+            // return <WelcomePage/>;
         break;
     }
     
@@ -53,17 +59,17 @@ function App() {
 //   let [isActive, set_isactive] = useState(true);
 
 
-  let [currentPage_URL, set_Pageurl] = useState("");
+  let [currentPage_Path, set_PagePath] = useState("");
   let [headerHeight, setHeaderHeight] = useState(0);
 
 
   // refresh callb ack funct
   let pageRefresh = () => { 
-        set_Pageurl(MyBorwser.getPage());
+        set_PagePath(MyBorwser.getCurrentPath());
   }
 
   MyBorwser.setReload(pageRefresh);                   // estbalish refresh callback funct
-
+  console.log("CP = " + MyBorwser.getPage());
 
   useLayoutEffect(
     () => { 
@@ -71,12 +77,8 @@ function App() {
         let changeHeaderHeight = () => {
             // set header spacing
             let header = document.getElementById("header");
-            if (header!= null) {
-                let hh = header.offsetHeight;
-                setHeaderHeight(hh);
-            }
+            if (header!= null) setHeaderHeight(header.offsetHeight);
         }
-
         
         // resize action listener to re-initialise header height
         window.addEventListener("resize", changeHeaderHeight);

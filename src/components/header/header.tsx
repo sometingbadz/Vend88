@@ -4,6 +4,7 @@ import HeaderPopUp from "./HeaderPopUp";
 
 import HeadingContent, {HeaderItem} from './HeadingContent';
 import MyBrowser from "../../Browser/MyBrowser";
+import PageURLS from "../../PageUris";
 
 let RenderHeader : React.FC<{headerItem : HeaderItem[]}> = (props) => {
     let HeaderRef = React.useRef<HTMLDivElement>(null);
@@ -22,12 +23,10 @@ let RenderHeader : React.FC<{headerItem : HeaderItem[]}> = (props) => {
                 image_Promise.then
                 ( 
                     (element) =>  {MyBrowser.reload(); }                                     // reload page 
-                
                 )
                 .catch
                 (
                     (err) => { console.log("Error for Element Logo : " + err); }
-                    
                 )
             }
             getImage();
@@ -74,7 +73,7 @@ let RenderHeader : React.FC<{headerItem : HeaderItem[]}> = (props) => {
 
             <div ref = {HeaderRef} id = "header" className="header_Container">
                 <div className="content_Container">
-                    <div className="logoContainer">
+                    <div className="logoContainer" onMouseDown={() => { MyBrowser.setPage(PageURLS.home)}}>
                         <img className="LogoImage" src = {headerLogo_Src}/>
                     </div>
                     <div id = "divider"/>

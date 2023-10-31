@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { ReactNode, useLayoutEffect } from "react";
 
 
 
@@ -7,7 +7,7 @@ import react from "react";
 
 export interface GridItems{
     name : string,
-    description : string,
+    description : ReactNode,
     imageUrl : string
 }
 
@@ -18,7 +18,7 @@ let itemClick =() => {
 
 }
 
-let RenerPage : React.FC<{Elements : GridItems[]}> = (props) => { 
+let RenerPage : React.FC<{Elements : GridItems[], selectedItem ?: number}> = (props) => { 
     let columnSize = 2; 
 
     let [itemHeight, setItemHeight] = react.useState(0);
@@ -40,30 +40,28 @@ let RenerPage : React.FC<{Elements : GridItems[]}> = (props) => {
             if (findOutMoreElement != null) findOutMoreElement.style.transform= "translate(100%,0)";
         }else if (item.type == "mouseenter")
             if (findOutMoreElement != null) findOutMoreElement.style.transform= "translate(0,0)";
-
-        
-
-      
-        // You can also return the DOM element if needed
       
     }
 
-    let [SelectedItem, setSelectedItem] = react.useState(-1);
+    let [SelectedItem, setSelectedItem] = react.useState((props.selectedItem == undefined) ? -1 : props.selectedItem);
+
 
 
     return (
         <>
-
             {
                 (SelectedItem !=-1) && 
                 <div onMouseDown={ (event) => {setSelectedItem(-1);}} className={style.ItemoverlayContainer}>
                     <div onMouseDown={(event) => {event.stopPropagation();}} className={style.itemOverlay}>
-                        <div style = {{width:"100%", height :"100%", background:'white', padding:'9%', boxSizing:'border-box'}}> 
-                            <img style ={{alignSelf:'start', objectFit:'contain', background:"rgba(0,0,0,0.1)", border :'solid 1px black',  height:'100%', width :'100%'}} src =  { props.Elements[SelectedItem].imageUrl == "" ? "https://i.ibb.co/C6pcK0x/comingsoon.png"  : props.Elements[SelectedItem].imageUrl }/>
+                        <div style = {{width:"100%", height :"100%",  padding:'5%', boxSizing:'border-box', overflow:'hidden'}}> 
+                                <img style ={{alignSelf:'start', objectFit:'contain', background:"rgba(0,0,0,0.1)",
+                                border :'solid 1px black',  height:'100%', width :'100%'}} src =  
+                                { props.Elements[SelectedItem].imageUrl == "" ? "https://i.ibb.co/C6pcK0x/comingsoon.png"  : 
+                                props.Elements[SelectedItem].imageUrl }/>
                         </div>
-                        <div style = {{padding :'5%', boxSizing:'border-box',}}>
+                        <div style = {{width:'100%', height :'100%', padding :'5%', boxSizing:'border-box', overflow:'auto'}}>
                             <h1>  {props.Elements[SelectedItem].name} </h1>
-                            <h3> {props.Elements[SelectedItem].description}</h3>
+                            {props.Elements[SelectedItem].description}
                         </div>
 
                     </div>
@@ -79,9 +77,9 @@ let RenerPage : React.FC<{Elements : GridItems[]}> = (props) => {
                             <div className={style.itemBlock} style = {{minHeight:`${itemHeight}px`, height:'400px'}}> 
                                 <div onMouseDown={ () => {setSelectedItem(i)}} onMouseLeave={itemAction} onMouseEnter={itemAction} className={style.items} key={i}>
                                     <div style = {{fontSize :'15px', transform:'translate(100%,0)', transition : 'all 1s'}} className={style.viewMoreContainer}>
-                                        FIND OUT MORE
+                                        Read more
                                     </div>
-                                    <div style = {{ width:'100%', padding:'5%', boxSizing:'border-box', height:'100%', overflow:'hidden'}}>
+                                    <div style = {{ width:'90%', padding:'0%', boxSizing:'border-box', height:'100%', overflow:'hidden'}}>
                                         <img style ={{objectFit:'contain', height:'100%', width :'100%', padding:'10%', boxSizing:'border-box'}} 
                                             src =  { props.Elements[i].imageUrl == "" ? "https://i.ibb.co/C6pcK0x/comingsoon.png"  : props.Elements[i].imageUrl }
                                         />
@@ -90,7 +88,8 @@ let RenerPage : React.FC<{Elements : GridItems[]}> = (props) => {
                                         <div className = {style.itemName}>
                                                 {props.Elements[i].name}
                                         </div>
-                                        <div className= {style.itemDescription} >
+                                    
+                                        <div className= {style.itemDescription} style = {{marginTop:'3%'}} >
                                                 {props.Elements[i].description}
                                         </div>
 

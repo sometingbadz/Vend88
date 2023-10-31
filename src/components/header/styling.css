@@ -28,14 +28,28 @@
 
 }
 
+.subitem{
+    background-color: white;
+
+}
+
+.subitem:hover{
+    background-color: grey;
+}
 
 .logoContainer{ 
     width:100%;
     display: flex;
     justify-content: left;
     align-items: center;
-    overflow: hidden;
+    overflow: hidden;   
+    cursor: pointer;
+    filter: brightness(1);
+    transition: 1s all;
+}
 
+.logoContainer:hover{
+    filter: brightness(0.9);
 }
 
 .navigation{

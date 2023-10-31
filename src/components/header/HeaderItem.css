@@ -19,7 +19,6 @@
     display: -webkit-box;
     text-align: center;
     -webkit-line-clamp: 1;
-    /* background-color: red; */
     -webkit-box-orient: vertical;
     word-wrap: break-word;
     color: grey;
@@ -29,6 +28,7 @@
     margin-left: 5%;
     position: relative;
     /* box-sizing: border-box; */
+    
 }
 .items:hover{
     opacity: 60%;
