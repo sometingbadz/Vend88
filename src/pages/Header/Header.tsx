@@ -29,7 +29,7 @@ let headerItems : HeaderItem[] = [
 
     },
     {
-        name :"AboutUs",
+        name :"About Us",
         url : PageUris.about
 
     },
