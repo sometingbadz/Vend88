@@ -1,7 +1,6 @@
 
 
 .container{
-
     overflow: hidden;
     width :100%;
     padding: 3%;
@@ -48,7 +47,6 @@
     flex-direction:column;
     justify-content:center;
     width:100%;
-
     /* width:100%;
     height: 100%; */
     /* padding-top: 25%;
@@ -142,6 +140,19 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.9px);
     -webkit-backdrop-filter: blur(7.9px);
+    flex-direction: column;
+}
+
+.Tabs{
+    background: white;
+    border: 1px solid black;
+    width: 90%;
+    margin-top: 10px;
+    padding: 1%;
+    padding-left: 3%;
+    box-sizing: border-box;
+    border-radius: 2em;
+    text-align: center;
 }
 .itemOverlay{
     /* border: solid 0.5px black; */
@@ -154,10 +165,26 @@
     border-radius: 2em;
     overflow: hidden;
     display :grid;
-    grid-template-columns: 50% 50%;
-
+    transition : all 1.5s;
 }
 
+.TabButton {
+    cursor: pointer;
+}
+
+.TabButton:hover{
+    text-decoration: underline;
+}
+
+.TabContainer{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 15px;
+}
 
 
 /* .itemDescriptionContainer{ 

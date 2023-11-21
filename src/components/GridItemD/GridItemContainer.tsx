@@ -4,13 +4,20 @@ import React, { ReactNode, useLayoutEffect } from "react";
 
 import style from "./Styling.module.css";
 import react from "react";
+import { tab } from "@testing-library/user-event/dist/tab";
 
 export interface GridItems{
     name : string,
-    description : ReactNode,
+    mainDescription : ReactNode,
+    tabs ? : { title : string , content : ReactNode}[],
     imageUrl : string
 }
 
+
+export interface SelectedItem_State{
+    selected_Item : number,                     // selected item
+    selected_Tab : number                   // sub category of selected item
+}
 
 
 // some item is clicked, we set state of item
@@ -18,7 +25,7 @@ let itemClick =() => {
 
 }
 
-let RenerPage : React.FC<{Elements : GridItems[], selectedItem ?: number}> = (props) => { 
+let RenerPage : React.FC<{Elements : GridItems[], selectedItemState ?: SelectedItem_State}> = (props) => { 
     let columnSize = 2; 
 
     let [itemHeight, setItemHeight] = react.useState(0);
@@ -43,28 +50,70 @@ let RenerPage : React.FC<{Elements : GridItems[], selectedItem ?: number}> = (pr
       
     }
 
-    let [SelectedItem, setSelectedItem] = react.useState((props.selectedItem == undefined) ? -1 : props.selectedItem);
-
-
+    let [SelectedItem, setSelectedItem] = react.useState((props.selectedItemState == undefined || props.selectedItemState.selected_Item >= props.Elements.length) ? -1 : props.selectedItemState.selected_Item);
+    let [selectedTab, setSelectedTab] = react.useState( (props.selectedItemState != undefined) ?  props.selectedItemState?.selected_Tab : -1);  // We denote -1 = main tab, 0 = first tab, ... 
+    
 
     return (
         <>
             {
                 (SelectedItem !=-1) && 
                 <div onMouseDown={ (event) => {setSelectedItem(-1);}} className={style.ItemoverlayContainer}>
-                    <div onMouseDown={(event) => {event.stopPropagation();}} className={style.itemOverlay}>
+                    <div onMouseDown={(event) => {event.stopPropagation();}} className={style.itemOverlay}
+                        style={{gridTemplateColumns: `${selectedTab === -1 ? "50% 50%" : "0% 100%"}`}}>
                         <div style = {{width:"100%", height :"100%",  padding:'5%', boxSizing:'border-box', overflow:'hidden'}}> 
                                 <img style ={{alignSelf:'start', objectFit:'contain', background:"rgba(0,0,0,0.1)",
                                 border :'solid 1px black',  height:'100%', width :'100%'}} src =  
                                 { props.Elements[SelectedItem].imageUrl == "" ? "https://i.ibb.co/C6pcK0x/comingsoon.png"  : 
                                 props.Elements[SelectedItem].imageUrl }/>
                         </div>
-                        <div style = {{width:'100%', height :'100%', padding :'5%', boxSizing:'border-box', overflow:'auto'}}>
-                            <h1>  {props.Elements[SelectedItem].name} </h1>
-                            {props.Elements[SelectedItem].description}
-                        </div>
+                        <div style = {{width:'100%', height :'100%', padding :'5%', boxSizing:'border-box', overflow:'auto',}}>
+                            <div className={style.TabContainer}>
+                                <h1 style = {{padding:'0px', margin:'0px'}}>{props.Elements[SelectedItem].name} </h1>
+                                <div className={style.Tabs}>
+                                    <span className={style.TabButton} onMouseDown={() => {setSelectedTab(-1)}}> Main </span>
+                                    {
+                                        (
+                                            // RENDER TABS
+                                            () => { 
+                                                let tabItems : ReactNode[] = [];
+                                                if (props.Elements[SelectedItem] != undefined ){
+                                                    if (props.Elements[SelectedItem].tabs != undefined){
+                                                        for (let i =0; i < props.Elements[SelectedItem].tabs!.length; i++){
+                                                            let element = <span className={style.TabButton} onMouseDown={() => {setSelectedTab(i)}}> | {props.Elements[SelectedItem].tabs![i].title} </span>
+                                                            tabItems.push(element);
+                                                        }
+                                                    }
+                                                }
+                                                return tabItems;
+                                            }
 
+                                        )()
+                                    }
+
+                                </div>
+                            </div>
+                          
+                            {
+                                (
+
+                                    // HANDLE TAB CONTENTS
+                                    () => { 
+                                        if (props.Elements[SelectedItem] != undefined && props.Elements[SelectedItem].tabs !== undefined ){
+
+                                            // Verify tab is valid.
+                                            if ( selectedTab < props.Elements[SelectedItem]!.tabs!.length && selectedTab >= 0 ){
+                                                return props.Elements[SelectedItem]!.tabs![selectedTab].content;
+                                            }                                             
+                                        }
+                                        return props.Elements[SelectedItem].mainDescription;
+                                    }
+                                )()
+
+                            }
+                        </div>
                     </div>
+                   
                 </div>
             }
         
@@ -90,7 +139,7 @@ let RenerPage : React.FC<{Elements : GridItems[], selectedItem ?: number}> = (pr
                                         </div>
                                     
                                         <div className= {style.itemDescription} style = {{marginTop:'3%'}} >
-                                                {props.Elements[i].description}
+                                                {props.Elements[i].mainDescription}
                                         </div>
 
                                         {/* {(props.Elements[i].imageUrl == "") {"sd"} : {props.Elements[i].imageUrl} } */}

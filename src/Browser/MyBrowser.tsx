@@ -13,7 +13,7 @@ class MyBrowser{
         console.log("My browser created");
         this.pageRefresh = undefined;
         this.setPage();
-        if (this.UrlPath != undefined) this.setPage(this.UrlPath[0]);
+        // if (this.UrlPath != undefined) this.setPage(this.UrlPath[0]);
     }
 
     /** set and assoicate the current url path of the browser / or the given page. Segnment (Url Path), and currentpage is set */

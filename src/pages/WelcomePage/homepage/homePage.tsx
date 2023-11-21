@@ -12,7 +12,7 @@ let RenerPage : React.FC<{}> = (props) => {
     return (
         <>
             <FadeAnimation>
-                <div style = {{ width:'100%', minHeight :'100vh', marginTop:'100px'}}>
+                <div style = {{ width:'100%',  marginTop:'100px'}}>
                     <MainSection />
                 </div>     
 
