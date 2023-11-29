@@ -1,0 +1,125 @@
+
+
+
+
+
+
+.pageContainer{
+
+    width:100%;
+    padding: 2%;
+    box-sizing: border-box;
+    text-align: center;
+
+
+}
+
+@media only screen and (max-width: 800px) {
+    .contentContainer{
+        grid-template-columns: 100%;
+
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .contentContainer{
+        grid-template-columns: 50% 50%;
+
+    }
+
+}
+
+.overlay_Container{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(7, 7, 7, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.9px);
+    -webkit-backdrop-filter: blur(7.9px);
+}
+
+.overlay_Inner{
+    border-radius: 2em ;
+    background :white;
+    width :85%;
+    height: 80%;
+    overflow: hidden;
+    padding: 3%;
+    box-sizing: border-box;
+}
+.contentContainer{
+    display :grid;
+}
+
+.mainDescription {
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    
+}
+.itemContainer{ 
+    width :100%;
+    height :500px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.item h2, item p{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.itemDescription{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.item{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 30% 70%;
+    border: 1px solid black;
+    padding : 3%; 
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 1em;
+    cursor: pointer;
+    transition: all 0.1s;
+
+}
+.item:hover{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

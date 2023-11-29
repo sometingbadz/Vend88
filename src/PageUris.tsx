@@ -9,7 +9,7 @@ const uris = {
     location: "#location",
     contact: "#contact",
     about: "#about",
-
+    news: "#news",
   };
   
   export default uris;

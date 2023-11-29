@@ -15,7 +15,7 @@ import PageUrls from './PageUris';
 import ContactPage from "./pages/ContactPage/contact.tsx";
 import LocationPage from "./pages/LocationPage/LocationPage.tsx";
 import AboutPage from "./pages/AboutPage/About.tsx";
-
+import NewsPage from "./pages/news/NewsPage"
 /** Return jsx of the page based on the given url  */
 let getPage = (headerHeight) =>{
     let element;
@@ -41,6 +41,9 @@ let getPage = (headerHeight) =>{
         break;
         case PageUrls.about :
             element =  <AboutPage/>
+        break;
+        case PageUrls.news :
+            element =  <NewsPage/>
         break;
         default :
             element =  <HomePage/>

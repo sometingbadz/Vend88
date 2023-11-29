@@ -5,10 +5,17 @@
 
 let RenderPage : React.FC<{children : React.ReactNode}> = (props) => { 
     let MaxPageWidth = 3000;             // max page size width
+    let Footer =
+    <>
+        <div className='fooder' style ={{width:`100vw`, textAlign:'center', background:'white', padding:'2%', boxSizing:'border-box'}}>
+            [Footer] - Copyright © 2023 
+        
 
+        </div>    
+    </>
     return (
         <>
-            <div style = {{width:"100%",  display:'flex', justifyContent : 'center'}}>
+            <div style = {{width:"100%",  display:'flex', justifyContent : 'center', minHeight:'100vh'}}>
                 <div id = "pageWrapper" style = {
                     {
                         width: `${MaxPageWidth}px`,
@@ -19,6 +26,7 @@ let RenderPage : React.FC<{children : React.ReactNode}> = (props) => {
                 </div>
 
             </div>
+            {Footer}
         </>
     )
 }

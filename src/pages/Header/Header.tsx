@@ -31,6 +31,10 @@ let headerItems : HeaderItem[] = [
     {
         name :"About Us",
         url : PageUris.about
+    },
+    {
+        name :"News",
+        url : PageUris.news 
 
     },
     {
