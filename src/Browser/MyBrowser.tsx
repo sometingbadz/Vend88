@@ -9,6 +9,18 @@ class MyBrowser{
     // React.Dispatch<React.SetStateAction<string>> | undefined;     // component refresher through useState callback
     private UrlPath : string[] | undefined;  // where urlPath[0] = root directory
 
+    private  MobileWidth : number = 1000;
+
+
+    isMobile () : boolean {
+    
+        if (window.innerWidth < this.MobileWidth )return true;
+            
+
+        return false;
+    }
+
+
     constructor(){
         console.log("My browser created");
         this.pageRefresh = undefined;

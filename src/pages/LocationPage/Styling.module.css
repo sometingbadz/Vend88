@@ -1,0 +1,15 @@
+
+
+
+.vendingLink{
+
+    border: 0.1px solid grey;
+    margin-left: 5px;
+    padding: 1%;
+    box-sizing: border-box;
+}
+
+.vendingLink:hover{
+    background-color: black;
+    color:white;
+}

@@ -28,10 +28,10 @@ let RenderSection : React.FC<{}> = (props) => {
                         {/* grids of information will go here */}
                     </div>
                     <div style = {{  width:'100%', position:'relative', marginTop :'50px'}}>
-                        <div style = {{width:"100%", display:"grid"}}> 
-                                <div style ={{width:'100%', height : "39vw", overflow :'hidden', position:'relative'}}>
+                        <div style = {{width:"100%", display:"grid", justifyItems:'center'}}> 
+                                <div style ={{width:'80%', height : "39vw", overflow :'hidden', position:'relative'}}>
                                     {/* <img onMouseOver={MacineAction} onMouseLeave={MacineAction} style = {{ cursor :'pointer', transition :'all 0.5s', position:'absolute', width:'100%', height :'100%', objectFit:'contain', opacity:'0' }} src = "https://i.ibb.co/r5wJ19z/icecream2.png"/>  */}
-                                    <img style = {{width:'100%', height :'100%', objectFit:'contain'}} src = "https://i.ibb.co/7bDPn7Q/icecream2.png"/> 
+                                    <img style = {{width:'100%', height :'100%', objectFit:'contain'}} src = "https://i.ibb.co/x2652x1/icecream2.png"/> 
                                 </div>
                         </div>
                     </div>

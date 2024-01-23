@@ -4,11 +4,43 @@ import React, { useEffect } from "react";
 import FadeAnimation from '../../Animations/PageFade';
 import "./Styling.css";
 import { isJSDocUnknownTag } from "typescript";
+import {useLayoutEffect} from "react";
 
 let RenerPage : React.FC<{}> = (props) => { 
+    let region="na1",portalId="20673809", formId='620ed72a-1f29-4933-9393-ee0c94cfdd74'
+
+    useLayoutEffect(() => {
+        console.log("Creating script");
+        const script = document.createElement('script');
+        script.src='https://js.hsforms.net/forms/shell.js';
+        document.body.appendChild(script);
+
+        script.addEventListener('load', () => {
+            // @ts-ignore
+            if (window.hbspt) {
+                console.log("creating");
+                // @ts-ignore
+                window.hbspt.forms.create({
+                    region: region,
+                    portalId: portalId,
+                    formId: formId,
+                    target: '#hubspotForm'
+                })
+            }
+        });
+    }, []);
+
+
 
     return (
+
+
+            // <div>
+            //     <div id="hubspotForm"></div>
+            // </div>
+        
         <FadeAnimation>
+
             <div style = {{ width:'100%', minHeight :'101vh', display:'flex', flexDirection:'column',  background :'#f2f2f2'}}>
                 <div style = {{width:'100%' , display:'grid', justifyContent :'center' , marginTop:'50px', marginBottom :'40px', textAlign:'center', wordBreak :'break-all'}}>
                     <h1> LETS CONNECT </h1>
@@ -20,12 +52,14 @@ let RenerPage : React.FC<{}> = (props) => {
                 <div style = {{width:'100%', display :'flex', alignItems:'center', flexDirection :'column'}}>
                     <div id = 'contactusInfo'>
                         <div className  = 'contactUsContainer'>
-                            <img src = "https://www.svgrepo.com/show/38705/location-pin.svg"></img>
+                            <img  src = "https://www.svgrepo.com/show/532544/location-pin-alt.svg"></img>
                             <h1>
                                 OUR MAIN OFFICE
                             </h1> 
-                         
-                            <p>   10/191 Parramatta Road Auburn NSW 2144 </p>
+                            <p>
+                                <a href="https://www.google.com/maps?ll=-33.839386,151.034718&z=16&t=m&hl=en&gl=AU&mapclient=embed&q=10/191+Parramatta+Rd+Auburn+NSW+2144">   
+                                10/191 Parramatta Road Auburn NSW 2144 </a>
+                            </p>
                         
                         </div>
                        
@@ -35,8 +69,11 @@ let RenerPage : React.FC<{}> = (props) => {
                             <h1>
                                 Phone Number
                             </h1> 
-                         
-                            <p> 1300 290 600 </p>
+                            <p >  
+
+                            <a style ={{padding:'0', margin:'0'}} href="tel:1300290600">1300 290 600</a>
+
+                            </p>
                         </div>
                        
 
@@ -47,7 +84,11 @@ let RenerPage : React.FC<{}> = (props) => {
                                 Email
                             </h1> 
                          
-                            <p> ... </p>
+                            <p>
+                                <a href =  "mailto: purchasing@pospal.com.au"> purchasing@pospal.com.au 
+                                
+                                </a> 
+                            </p>
                         </div>
                        
                         <div className  = 'contactUsContainer'>
@@ -55,9 +96,15 @@ let RenerPage : React.FC<{}> = (props) => {
                             <h1>
                                 Instagram
                             </h1> 
-                            <a style={{color:'blue'}} href="https://www.instagram.com/vend_88"> <p> @vend_88 </p></a>
+                            <a  href="https://www.instagram.com/vend_88" target="blank"> <p> @vend_88 </p></a>
                         </div>
-
+                        <div className  = 'contactUsContainer'>
+                            <img src = "https://www.svgrepo.com/show/521654/facebook.svg"></img>
+                            <h1>
+                                Facebook
+                            </h1> 
+                            <a  href="https://www.facebook.com/profile.php?id=61555314277920" target="blank"> <p> vend_88 </p></a>
+                        </div>
                     </div>
                     <div id = "section2Info"> 
                         <div className = "section2Container" style = {{textAlign:'center'}}>
@@ -65,6 +112,9 @@ let RenerPage : React.FC<{}> = (props) => {
                             <h1>
                                 FORM
                             </h1> 
+                             <div className="formcontainer" >
+                                 <div id="hubspotForm"></div>
+                            </div>
                         </div>
 
                         <div className = "section2Container" style = {{textAlign:'center'}}>

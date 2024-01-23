@@ -14,21 +14,18 @@ let RenerPage : React.FC<{}> = (props) => {
             mainDescription : 
                 <>
                     <p>Introducing the Harajuku Ice Cream Machine – A Sweet Delight for the Heart of Harajuku!</p>
-                
-                    In the heart of Harajuku, where vibrant street art, eclectic fashion, and youthful energy collide, the 
-                    Harajuku Ice Cream Machine stands as a delicious testament to this unique cultural melting pot. Inspired by
-                    vibrant colors and the boundless creativity that defines Harajuku, this ice cream machine is a must-visit for locals and tourists alike.
+                    Our Harajuku soft-serve is a Japanese-style vanilla soft service which delivers a delicate, milky Hokkaido style taste and it's gentle on the senses and yet immensely satisfying. 
+                    All made with premium Australian milk and gluten free!
                 </>,
-            imageUrl : "https://i.ibb.co/D4YKW03/itemsadf.png"
+            imageUrl : [ "https://i.ibb.co/YPy2BYD/skin-Front.jpg", "https://i.ibb.co/NCWW1q7/sideSoft.jpg", "https://i.ibb.co/0Q3f6pG/vending-Side-Anime.jpg",  "https://i.ibb.co/D4YKW03/itemsadf.png"]
         },
         {
             name : "Hokkaido",
             mainDescription : <>
                 <p>Introducing the Hokkaido Farm Fresh Ice Cream Machine – Where Milk Meets Magic in Hokkaido!</p>
-                Nestled in the pristine, natural beauty of Hokkaido, where rugged landscapes, volcanic wonders
-                and ski paradises captivate the soul, the Hokkaido Farm Fresh Ice Cream Machine stands as a delightful
-                homage to this northernmost gem of Japan. Hokkaido is renowned for itslush farmlands and the quality of 
-                its dairy products, ensuring that every scoop of ice cream is a taste of Hokkaido's pristine, farm-fresh goodness.
+
+                Nestled in the pristine, natural beauty of Hokkaido, where rugged landscapes, volcanic wonders and ski paradises captivate the soul, the Hokkaido Farm Fresh Ice Cream Machine stands as a delightful homage to this northernmost gem of Japan. Hokkaido is renowned for itslush farmlands and the quality of its dairy products, ensuring that every scoop of ice cream is a taste of Hokkaido's pristine, farm-fresh goodness.
+
             </>,
             tabs : [{
                 title :"Poem",
@@ -66,33 +63,33 @@ let RenerPage : React.FC<{}> = (props) => {
 
                     </>
             }],
-            imageUrl : "https://i.ibb.co/0mTg8TR/machine2.png"
+            imageUrl : ["https://i.ibb.co/vDpCGfh/FRONT.jpg", "https://i.ibb.co/SKx9sRg/SIDE2.jpg", "https://i.ibb.co/kSjrxfb/SIDE.jpg" ]
         },
         {
-            name : "Vending 3",
-            mainDescription : "this is vending 3",
-            imageUrl : ""
+            name : "Coming soon",
+            mainDescription : "",
+            imageUrl : ["./vendingMachineEmpty.png"]
         },
-        {
-            name : "Vending 4",
-            mainDescription : "this is vending 4",
-            imageUrl : ""
-        },
-        {
-            name : "Vending 5",
-            mainDescription : "this is vending 5",
-            imageUrl : ""
-        },
-        {
-            name : "Vending 6",
-            mainDescription : "this is vending 6",
-            imageUrl : ""
-        },
-        {
-            name : "Vending 7",
-            mainDescription : "this is vending 7",
-            imageUrl : ""
-        }
+        // {
+        //     name : "Vending 4",
+        //     mainDescription : "this is vending 4",
+        //     imageUrl : []
+        // },
+        // {
+        //     name : "Vending 5",
+        //     mainDescription : "this is vending 5",
+        //     imageUrl : []
+        // },
+        // {
+        //     name : "Vending 6",
+        //     mainDescription : "this is vending 6",
+        //     imageUrl : []
+        // },
+        // {
+        //     name : "Vending 7",
+        //     mainDescription : "this is vending 7",
+        //     imageUrl : []
+        // }
     ]
 
     let Path = MyBrowser.getCurrentPath();

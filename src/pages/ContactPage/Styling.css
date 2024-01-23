@@ -6,7 +6,7 @@
     #contactusInfo{
 
         width:70%;
-        grid-template-columns: repeat(4, 25%);   
+        grid-template-columns: repeat(5, 20%) !important;
     }
     #section2Info{
 
@@ -30,6 +30,7 @@
 
 #contactusInfo{
     display: grid;  
+    
 }
 
 #section2Info{
@@ -42,6 +43,13 @@
     display: grid;
     word-break: break-all;
 }
+
+.formcontainer{
+    width: 100%;
+    padding: 2%;
+    box-sizing: border-box;
+}
+
 .section2Container{
     width:100%;
     border: 1px solid black;
@@ -57,7 +65,7 @@
 .contactUsContainer{
     width: 100%;
     border: solid 1px black;
-    align-items: center;
+    /* align-items: center; */
     display: flex;
     word-wrap: break-word;
     word-break: break-all;
@@ -77,7 +85,19 @@
     /* height: 100%; */
     object-fit: contain;
     margin-bottom: 7%;
+    height: 65px;
 }
+
+.contactUsContainer a{
+    color: black;
+    transition: all 0.5s;
+}
+
+.contactUsContainer a:hover{
+    text-decoration: underline 2px solid;
+}
+
+
 
 .contactUsContainer p{
 

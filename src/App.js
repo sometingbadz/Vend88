@@ -17,12 +17,14 @@ import LocationPage from "./pages/LocationPage/LocationPage.tsx";
 import AboutPage from "./pages/AboutPage/About.tsx";
 import NewsPage from "./pages/news/NewsPage"
 /** Return jsx of the page based on the given url  */
-let getPage = (headerHeight) =>{
+let getPage = () =>{
     let element;
     let Headercontent =
             <>
                 <Header/>
-                <div className='header_padding' style ={{height:`${headerHeight}px`, width :'100%;'}}/>
+                {/* {
+                    !MyBorwser.isMobile() && <div className='header_padding' style ={{height:`${headerHeight}px`, width :'100%;'}}/>
+                } */}
             </>
 
     switch(MyBorwser.getPage())
@@ -63,7 +65,6 @@ function App() {
 
 
   let [currentPage_Path, set_PagePath] = useState("");
-  let [headerHeight, setHeaderHeight] = useState(0);
 
 
   // refresh callb ack funct
@@ -74,28 +75,12 @@ function App() {
   MyBorwser.setReload(pageRefresh);                   // estbalish refresh callback funct
   console.log("CP = " + MyBorwser.getPage());
 
-  useLayoutEffect(
-    () => { 
-        // check new header height
-        let changeHeaderHeight = () => {
-            // set header spacing
-            let header = document.getElementById("header");
-            if (header!= null) setHeaderHeight(header.offsetHeight);
-        }
-        
-        // resize action listener to re-initialise header height
-        window.addEventListener("resize", changeHeaderHeight);
-        changeHeaderHeight();
-        return () => {
-            window.removeEventListener("resize", changeHeaderHeight  );
-        }
-    }
-  )
+
 
   return (
       <>
             
-        {getPage(headerHeight)}
+        {getPage()}
         {/* { (currentPage_URL ==  rootDir) &&  <WelcomePage/> } 
         {(currentPage_URL ==  (rootDir + "vending")) &&  <VendingPage/>} */}
 
